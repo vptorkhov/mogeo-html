@@ -1,0 +1,36 @@
+.document {
+	margin-bottom: 8px;
+	display: flex;
+	&:last-child {
+		margin-bottom: 0;
+	}
+	&__info {
+		margin-left: 6px;
+		font-weight: 400;
+	}
+	&__icon {
+		width: 40px;
+		min-width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--icon-primary);
+		border-radius: 50%;
+		.icon {
+			font-size: 24px;
+			color: #ffffff;
+		}
+	}
+	&__title {
+		font-style: normal;
+		font-size: 16px;
+		line-height: 130%;
+		color: var(--main-grey);
+	}
+	&__size {
+		color: var(--secondary-grey);
+		font-size: 14px;
+		line-height: 16px;
+	}
+}

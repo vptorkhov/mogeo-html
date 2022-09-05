@@ -1,0 +1,37 @@
+extends ../layout/main.pug
+include ../blocks/private-chat-tabs/_private-chat-tabs.pug
+
+block variables
+	- let  mainPage= null
+	- let  bg= null
+block title
+	- let  title= index.head.title
+	title= title
+block pagecontent
+	.p-5
+		.row(style="background-color: grey;")
+			.col-lg-6.p-4(style="display: flex; flex-wrap: wrap; gap: 32px")
+				+private_chat_tab_task("Кластер | Чона", "ПРБ")
+				+private_chat_tab_task_class-active("Кластер | Чона", "ПРБ")
+				+private_chat_tab_task-disabled("Кластер | Чона", "ПРБ")
+		.row(style="background-color: grey;")
+			.col-lg-6.p-4(style="display: flex; flex-wrap: wrap; gap: 32px")
+				+private_chat_tab_request-active("Кластер | Чона", "2342342")
+				+private_chat_tab_request-active_class-active("Кластер | Чона", "2342342")
+				+private_chat_tab_request-closed("Кластер | Чона", "2342342")
+				+private_chat_tab_request-closed_class-active("Кластер | Чона", "2342342")
+				+private_chat_tab_request-active-disabled("Кластер | Чона", "2343453")
+		.row(style="background-color: grey;")
+			.col-lg-6.p-4(style="display: flex; flex-wrap: wrap; gap: 32px")
+				+private_chat_tab_theme-active("Кластер | Чона", "Тема приватного чата")
+				+private_chat_tab_theme-active_class-active("Кластер | Чона", "Тема приватного чата")
+				+private_chat_tab_theme-closed("Кластер | Чона", "Тема приватного чата")
+				+private_chat_tab_theme-closed_class-active("Кластер | Чона", "Тема приватного чата")
+				+private_chat_tab_theme-active-disabled("Кластер | Чона", "Тема приватного чата")
+		.row(style="background-color: grey;")
+			.col-lg-6.p-4(style="display: flex; flex-wrap: wrap; gap: 32px")
+				+private_chat_tab_theme-active("Кластер | Чона", "")
+				+private_chat_tab_theme-active_class-active("Кластер | Чона", "")
+				+private_chat_tab_theme-closed("Кластер | Чона", "")
+				+private_chat_tab_theme-closed_class-active("Кластер | Чона", "")
+				+private_chat_tab_theme-active-disabled("Кластер | Чона", "")

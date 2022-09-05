@@ -1,0 +1,59 @@
+include ../messages/_messages.pug
+
+mixin chat()
+	+b.chat
+		+chat_window()
+		+chat_bar()
+
+
+mixin sender(name, position)
+	+b.sender 
+		+e.avatar 
+			img(src="img/@2x/slide-25.jpg")
+		+e.name-and-position 
+			+e.P.name=name 
+			+e.P.position=position
+
+mixin sender2(name, position)
+	+b.sender 
+		+e.avatar 
+			img(src="img/@2x/slide-25.jpg")
+		+e.name-and-position 
+			+e.P.name=name 
+			+e.P.position
+				span!=position
+				span!=position
+
+mixin chat_window()
+	+e.messages.scrollbar-vertical
+		+e.P.date 20 января 2020
+		+e.sender-wrap
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+		+e.block-of-messages
+			+message("incoming", bigtext, "15.08.2022 14:48", false, true)
+			+message("incoming", bigtext, "15.08.2022 14:48", true)
+		+e.sender-wrap
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+		+e.block-of-messages--last
+			+message("incoming", "Lorem ipsum dolor sit amet", "15.08.2022 14:48")
+		+e.block-of-messages--last
+			+message("incomin", "Lorem ipsum dolor sit amet", "15.08.2022 14:48")
+			+message("incomin", bigtext, "15.08.2022 14:48", true)
+		+e.P.date 20 января 2020
+		+new_messages_line()
+		+e.sender-wrap
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+		+e.block-of-messages
+			+message("incoming", bigtext, "15.08.2022 14:48", false, true)
+
+mixin chat_bar()
+	+e.chat-bar 
+		+e.BUTTON.menu.btn 
+			img(src="img/svg/chat-menu.svg")
+		textarea(type='text' placeholder="Введите сообщение")
+		//- +e.BUTTON.voice-message.btn 
+		//- 	img(src="img/svg/microphone.svg")
+
+mixin new_messages_line()
+	+b.new-message-line 
+		+e.P.text Новые сообщения

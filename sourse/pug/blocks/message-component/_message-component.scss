@@ -1,0 +1,81 @@
+.message-component  {
+	padding: 8px 20px 0px;
+	background-color: #ffffff;
+	width: 100%;
+	cursor: pointer;
+	&__wrap {
+		padding-bottom: 12px;
+		border-bottom: 2px solid #ECF1F4;
+	}
+	&.unread {
+		background-color: #DEF0FB;
+	}
+	&.active {
+		background-color: #ECF1F4;
+	}
+	&__date {
+		font-style: normal;
+		font-weight: 400;
+		font-size: 12px;
+		line-height: 14px;
+		text-align: right;
+		color: var(--main-grey);
+		margin-bottom: 4px;
+	}
+}
+.message-info {
+	display: flex;
+	width: 100%;
+	&__avatar, &__group {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		margin-right: 16px;
+		background-color: #ECF1F4;
+	}
+	&__avatar {
+		img {
+			height: 100%;
+		}
+	}
+	&__group {
+		padding: 6px 0 0 8px;
+		img {
+			height: 24px;
+		}
+	}
+	&__message-counter {
+		height: 26px;
+		margin-left: auto;
+		align-self: flex-end;
+	}
+}
+.message-texts {
+	max-width: 306px;
+	max-width: calc(100% - 56px);
+	&.unread {
+		max-width: calc(100% - 100px);
+	}
+	&__name {
+		font-style: normal;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 19px;
+		color: var(--main-black);
+	}
+	&__text {
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 16px;
+		color: var(--main-grey);
+		text-overflow: hidden;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	&__flex {
+		display: flex;
+		align-items: center;
+		margin-bottom: 6px;
+		gap: 6px;
+	}
+}

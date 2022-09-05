@@ -1,0 +1,236 @@
+.create-chat {
+	background-color: #ffffff;
+	border-radius: 16px;
+	width: 540px;
+	display: flex;
+	flex-direction: column;
+	&--dialog {
+		height: 700px;
+	}
+	&--start {
+		height: 310px;
+	}
+	&__top {
+		padding: 14px 20px;
+		border-bottom: 1px solid #f2f4f5;
+		position: relative;
+		height: 48px;
+		min-height: 48px;
+	}
+	&__close {
+		position: absolute;
+		top: 12px;
+		right: 20px;
+		width: 24px;
+		height: 24px;
+		border: none;
+		background-color: transparent;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.icon {
+			height: 14px;
+			width: 14px;
+			color: #667985;
+		}
+	}
+	&__title {
+		font-style: normal;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 19px;
+		color: var(--main-black);
+		text-align: center;
+	}
+	&__main-content {
+		padding: 0 24px;
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		overflow-y: hidden;
+	}
+	&__section {
+		font-style: normal;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 16px;
+		color: #b3bcc2;
+		padding: 24px 0 16px;
+	}
+	&__added-people {
+		padding: 24px 0px;
+	}
+	&__alphabet-list {
+		
+		overflow: auto;
+		border-bottom: 1px solid #ccd9e0;
+		border-top: 1px solid #ccd9e0;
+		flex-grow: 1;
+	}
+	&__added-people {
+		display: flex;
+		justify-content: space-between;
+		.btn {
+			border: none;
+			padding: 0;
+		}
+		.icon {
+			fill: var(--main-red);
+			width: 24px;
+			height: 24px;
+		}
+		& + & {
+			margin-bottom: 24px;
+		}
+	}
+	&__bottom-buttons {
+		padding: 24px 0;
+		display: flex;
+		justify-content: space-between;
+	}
+	&__cancel,
+	&__next {
+		width: 48%;
+	}
+	.btn {
+		border-width: 2px;
+		padding: 15px 0px 14px;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 19px;
+	}
+	&__info-wrap {
+		display: flex;
+		align-items: center;
+		padding-top: 24px;
+		padding-bottom: 24px;
+		border-bottom: 2px solid #f2f4f5;
+	}
+	&__img-block {
+		width: 111px;
+		height: 111px;
+		min-width: 111px;
+		margin-right: 24px;
+	}
+
+	&__chat-pic-change {
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		border: 1px solid #33b4ff;
+		background-color: #def0fb;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.icon {
+			font-size: 32px;
+			color: #33b4ff;
+		}
+		img {
+			width: 100%;
+			height: 100%;
+			max-width: 100%;
+			max-height: 100%;
+			border-radius: 50%;
+		}
+		&--with-pic {
+			background-color: transparent;
+			border-color: transparent;
+		}
+	}
+	&__name-block {
+		flex-grow: 1;
+	}
+	&__input-wrap {
+		label {
+			width: 100%;
+		}
+		input {
+			width: 100%;
+		}
+	}
+	&__input-title {
+		padding-top: 3px;
+		padding-bottom: 4px;
+		margin-bottom: 4px;
+		font-size: 12px;
+		line-height: calc(14 / 12);
+		color: #4d5f6a;
+	}
+	&__input {
+		font-size: 16px;
+		line-height: 130%;
+		padding: 13px 12px;
+		border: 1px solid #ccd9e0;
+		border-radius: 8px;
+	}
+	&__roles {
+		padding: 24px 0;
+		& > * {
+			margin-bottom: 16px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+	&__roles-title {
+		font-size: 14px;
+		font-weight: 500;
+		line-height: calc(16 / 14);
+		text-transform: uppercase;
+		color: #b3bcc2;
+	}
+	&__role-person {
+		.create-chat__added-people {
+			padding: 0;
+			padding-bottom: 12px;
+		}
+		.create-chat__delete {
+			padding: 0;
+		}
+	}
+	&__role-select-head {
+		display: flex;
+		justify-content: space-between;
+	}
+	&__role-select-reset {
+		font-size: 12px;
+		line-height: calc(14 / 12);
+		padding-top: 3px;
+		padding-bottom: 4px;
+	}
+}
+.requiry-star {
+	color: var(--main-red);
+}
+.participants-search-block {
+	display: flex;
+	position: relative;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 24px;
+	&__decline {
+		border: none;
+		background-color: transparent;
+		padding: 11px 0px 10px 8px;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 19px;
+		color: #0096eb;
+	}
+	.cross {
+		display: none;
+	}
+	@media screen and (max-width: 744px) {
+		margin-top: 16px;
+		&__decline {
+			position: absolute;
+			top: 6px;
+			right: 8px;
+			padding: 0;
+		}
+	}
+}

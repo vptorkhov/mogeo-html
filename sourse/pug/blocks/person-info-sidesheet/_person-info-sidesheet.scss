@@ -1,0 +1,52 @@
+.side-sheet  {
+	&__person {
+		display: flex;
+		gap: 32px;
+		padding-top: 8px;
+		margin-bottom: 32px;
+		align-items: center;
+	}
+	&__post {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+	&__online {
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 16px;
+		color: var(--main-grey);
+	}
+	&__chat-photo, &__chat-photo-group {
+		width: 111px;
+		height: 111px;
+		background-color: #506571;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+	&__chat-photo {
+		img {
+			height: 100%;
+		}
+	}
+	&__chat-photo-group {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		img {
+			height: 66px;
+			display: block;
+		}
+	}
+	&__container-b32 {
+		margin-bottom: 32px;
+	}
+	&__container-notifs {
+		padding: 24px 0;
+		margin-bottom: 32px;
+		border-bottom: 1px solid #e5ecef;
+		border-top: 1px solid #e5ecef;
+		display: flex;
+		gap: 16px;
+	}
+}

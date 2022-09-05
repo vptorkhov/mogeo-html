@@ -1,0 +1,158 @@
+include ../assignment-statuses/_assignment-statuses.pug
+
+//- +assignment_ready()
+		//- +assignment_closed()
+		//- +assignment_opened()
+		//- +assignment_in-process()
+		//- +assignment_tag()
+		//- +assignment_add()
+
+mixin assignments_list()
+	+b.assignments-list
+		+assignments_tabs()
+		+assignments_top()
+		+assignment_line_ready("not-urgent", "success", "Длинное название задачи в супермного букв длинное название задачи", false, true, "alert", true)
+		+assignment_line_closed("critical", "alert", "Короткое описание поручения", true, false, "caution")
+		+assignment_line_ready("desirable", "caution", "Длинное название задачи в супермного букв длинное название задачи", false, false)
+		+assignment_line_ready("important", false, "Длинное название задачи в супермного букв длинное название задачи", false, true)
+
+
+mixin assignment_line_ready(icon, status, task_name, solution, needs_solution, date_mark, circle)
+	+b.assignment-line
+		+e.icon 
+			img(src=`img/svg/${icon}.svg`)
+		+b.main-content 
+			+e.description-and-name
+				+e.P.bold Длинное описание поручения в одну или несколько строк №12 до 21.12.2022 для наглядности отображения контента в несколько строк
+				+e.name(class=`--${status}`)
+					if status
+						+e.name-status
+							+icon('active')
+							+e.P.task-name=task_name
+					if solution
+						+e.P.solution Есть решение
+					if needs_solution
+						+e.P.solution--need Требуется решение
+			+e.date-name-status
+				+e.date 
+					+e.title!=`Крайний срок <span>(План)</span>`
+					.flex-row
+						+e.P.bold(class=`--${date_mark}`) 19.06.2022
+						if circle
+							img(src="img/svg/arrow-circle.svg")
+					+e.P.terms 14:00  18.08.2022 - 14:00  19.08.2022
+				+e.fio-status
+					+e.fio 
+						+e.title Автор
+						p Смирнова О.В.
+					+e.status 
+						+e.title Статус
+						+assignment_ready()
+			+e.title Теги
+			+e.tags
+				- for(var x = 0; x<2;x++)
+					+assignment_tag('Тэг')
+				+assignment_more(15)
+				+assignment_add()
+		+b.BUTTON.menu-button.btn
+			img(src="img/svg/menu.svg")
+
+mixin assignment_line_closed(icon, status, task_name, solution, needs_solution, date_mark, circle)
+	+b.assignment-line.closed
+		+e.icon 
+			img(src=`img/svg/${icon}.svg`)
+		+b.main-content 
+			+e.description-and-name
+
+				+e.P.bold Длинное описание поручения в одну или несколько строк №12 до 21.12.2022 для наглядности отображения контента в несколько строк
+				+e.name(class=`--${status}`)
+					if status
+						+e.name-status
+							+icon('active')
+							+e.P.task-name=task_name
+					if solution
+						+e.P.solution Есть решение
+					if needs_solution
+						+e.P.solution--need Требуется решение
+			+e.date-name-status
+				+e.date 
+					+e.title!=`Крайний срок <span>(План)</span>`
+					.flex-row
+						+e.P.bold(class=`--${date_mark}`) 19.06.2022
+						if circle
+							img(src="img/svg/arrow-circle.svg")
+					+e.P.terms 14:00  18.08.2022 - 14:00  19.08.2022
+				+e.fio-status
+					+e.fio 
+						+e.title Автор
+						p Смирнова О.В.
+					+e.status 
+						+e.title Статус
+						+assignment_closed()
+			+e.title Теги
+			+e.tags
+				+assignment_tag('Тэг')
+				+assignment_tag('Тэг')
+				+assignment_add()
+		+b.BUTTON.menu-button.btn
+			img(src="img/svg/menu.svg")
+
+mixin assignments_top()
+	+b.assignment-line--headers
+		+b.main-content--headers 
+			+e.description-and-name
+				+e.headers-wrap
+					+icon('three')
+					+e.P.header Запросы
+			+e.date-name-status
+				+e.date 
+					+e.headers-wrap
+						+icon('three')
+						+e.header-plan 
+							+e.header Крайний срок 
+							+e.plan План
+				+e.fio-status
+					+e.fio 
+						+e.headers-wrap
+							+icon('three')
+							+e.header Автор
+					+e.status--header 
+						+icon('three')
+						+e.header Статус
+			+e.tags
+				+e.header Тэги
+
+mixin assignments_tabs()
+	+b.assignments-tabs
+		+e.search
+			+assignments_search()
+		+e.tabs
+			+e.active-closed
+				+active_closed_tabs()
+			+e.incoming-sent
+				+incoming_sent_tabs()
+		+e.BUTTON.filters.btn
+			img(src="img/svg/filters.svg")
+
+
+mixin active_closed_tabs()
+	+b.tabs 
+		+e.BUTTON.tab--assignment(tabindex="1")
+			+e.P.text--assignment Все
+		+e.BUTTON.tab--assignment(tabindex="1") 
+			+e.P.text--assignment Закрытые
+		+e.BUTTON.tab--assignment.active(tabindex="1") 
+			+e.P.text--assignment Активные
+
+mixin incoming_sent_tabs()
+	+b.tabs--incoming-sent
+		+e.BUTTON.tab--assignment.active(tabindex="1")
+			+e.P.text--assignment Входящие
+		+e.BUTTON.tab--assignment(tabindex="1") 
+			+e.P.text--assignment Исходящие
+
+mixin assignments_search()
+	+b.assignments_search(tabindex="1")
+		+e.BUTTON.btn
+			img(src="img/svg/search.svg")
+		input(type="text", placeholder="Поиск")

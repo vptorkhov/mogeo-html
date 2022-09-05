@@ -1,0 +1,127 @@
+include ../counters/_counters.pug
+
+mixin tasks()
+	.tasks
+		+b.tasks-top 
+			+tasks_top_text()
+			+tasks_tabs()
+			+tasks_search()
+		+b.tasks-body.scrollbar-vertical 
+			+task_cell('read', 'Чона', '13.07.2020 13:56', '--success', 'Активна', "lock", false, false, false, 'Запакеровались на глубине 1754.2 м. Что делаем дальше?', 7, 2)
+			+task_cell-active('read', 'Чона', '13.07.2020 13:56', '--success', 'Активна', "key", false, false, false, 'Запакеровались на глубине 1754.2 м. Что делаем дальше?', 7, 2)
+			+task_cell-active('read', 'Чона', '13.07.2020 13:56', '--success', 'Активна', "lock", false, false, false, 'Запакеровались на глубине 1754.2 м. Что делаем дальше?', 7, 2)
+			+task_cell('unread', 'Чона', '13.07.2020 13:56', '--caution', 'Активна', "key", 'excel', false, true, '<span class="sender-person">Игорь Волин</span>: Запакеровались на глубине 1754.2 м. Что делаем дальше?')
+			+task_cell('unread', 'Чона', '13.07.2020 13:56', '--alert', 'Активна', false, 'poll', true, false, '<span class="task-file">Gradulated.docx.</span> Подвижность по оценочному замеру составила 0.35 мД/сП. Приступили.', false, 3)
+			+task_cell('unread', 'Чона', '13.07.2020 13:56', '--alert', 'Активна', false, 'poll', false, false, '<span class="task-file">Gradulated.docx.</span> Подвижность по оценочному замеру составила 0.35 мД/сП. Приступили.', false)
+			+task_cell('unread', 'Чона', '13.07.2020 13:56', '--alert', 'Активна', false, 'poll', false, false, '<span class="task-file">Gradulated.docx.</span> Подвижность по оценочному замеру составила 0.35 мД/сП. Приступили.', false)
+			+task_cell('unread', 'Чона', '13.07.2020 13:56', '--alert', 'Активна', false, 'poll', false, false, '<span class="message-draft">Черновик:</span> Подвижность по оценочному замеру составила 0.35 мД/сП. Приступили.', false)
+			+task_cell('read', 'Чона', '13.07.2020 13:56', '--draft', 'Черновик', false)
+			+task_cell('read', 'Чона', '13.07.2020 13:56', '--closed', 'Закрыта', "lock")
+			+task_cell-disable('read', 'Чона', '13.07.2020 13:56', '--unactive', 'Неактивна', false)
+
+
+mixin tasks_top_text()
+	+b.tasks-top-text
+		+e.P.header Задачи
+		+my_projects()
+		+b.BUTTON.tasks-filter
+			img(src="img/svg/filters.svg")
+			+e.P.text Фильтр
+
+mixin my_projects()
+	+b.my-projects
+		img(src="img/svg/my-projects-check.svg")
+		+e.text Мои проекты
+
+mixin tasks_tabs()
+	+b.tabs 
+		+e.BUTTON.tab(tabindex="1")
+			+e.P.text Все
+		+e.BUTTON.tab.active(tabindex="1") 
+			+e.P.text Активные
+		+e.BUTTON.tab(tabindex="1") 
+			+e.P.text Черновики
+		+e.BUTTON.tab(tabindex="1") 
+			+e.P.text Закрытые
+
+mixin tasks_search()
+	+b.tasks-search(tabindex="1")
+		+e.BUTTON.btn
+			img(src="img/svg/search.svg")
+		input(type="text", placeholder="Поиск")
+
+mixin task_cell(status, place, datetime, warning, warning_status, lock, icon, request, solution, text, num_requests, num_messages)
+	+b.task-cell(class=(status=="unread" ? "--unread" : "" ) + (lock=="key" ? " privat-chat-opened" : ''))
+		.task-wrap
+			+e.info
+				+task_status(warning, warning_status)
+				+e.P.place=place
+				+e.P.datetime=datetime
+			+task-name(lock)
+			+cell_bottom(icon, request, solution, text, num_requests, num_messages)
+
+mixin task_cell-disable(status, place, datetime, warning, warning_status, lock, icon, request, solution, text, num_requests, num_messages)
+	+b.task-cell.disable(class=(status=="unread" ? "--unread" : "" ) + (lock=="key" ? " privat-chat-opened" : ''))
+		.task-wrap
+			+e.info
+				+task_status(warning, warning_status)
+				+e.P.place=place
+				+e.P.datetime=datetime
+			+task-name(lock)
+			+cell_bottom(icon, request, solution, text, num_requests, num_messages)
+
+mixin task_cell-active(status, place, datetime, warning, warning_status, lock, icon, request, solution, text, num_requests, num_messages)
+	+b.task-cell.active(class=(status=="unread" ? "--unread" : "" ) + (lock=="key" ? " privat-chat-opened" : ''))
+		.task-wrap
+			+e.info
+				+task_status(warning, warning_status)
+				+e.P.place=place
+				+e.P.datetime=datetime
+			+task-name(lock)
+			+cell_bottom(icon, request, solution, text, num_requests, num_messages)
+
+
+mixin task_status(warning, warning_status)
+	+b.task-status(class=warning)
+		+icon('active')
+		+e.P.text=warning_status
+
+mixin task-name(type)
+	+b.task-name
+		if type
+			+icon(type)
+		+e.P.text ПРБ
+
+mixin cell_bottom(icon, request, solution, text, num_requests, num_messages)
+	+b.cell-bottom 
+		if icon
+			img(src=`/img/svg/${icon}.svg`)
+		+cell_request(request)
+		+cell_solution(solution)
+		if true 
+			+e.P.text!=text
+		+counter_requests(num_requests)
+		+counter_new_messages(num_messages)
+
+
+mixin cell_request(request)
+	if request
+		+b.cell-request 
+			+e.P.text Запрос №45449 
+
+mixin cell_solution(solution)
+	if solution
+		+b.cell-solution 
+			+e.P.text Решение №45449 
+
+//- mixin counter_requests(num)
+//- 	if num
+//- 		+b.counter-requests
+//- 			img(src="img/svg/arrow-down.svg")
+//- 			+e.P.num=num
+
+//- mixin counter_new_messages(num)
+//- 	if num
+//- 		+b.counter-new-messages
+//- 			img(src="img/svg/message.svg")
+//- 			+e.P.num=num

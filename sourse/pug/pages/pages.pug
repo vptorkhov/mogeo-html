@@ -1,0 +1,48 @@
+extends ../layout/main.pug
+
+block variables
+	- let  mainPage= null
+	- let  bg= null
+
+block title
+	- let  title= 'Страницы'
+	title= title
+block pagecontent
+	.container.p-5 
+		ol 
+			li.mb-4 
+				a(href="messages.html") Сообщение 
+			li.mb-4 
+				a(href="chat.html") Чат 
+			li.mb-4 
+				a(href="chat-info.html") Информация о чате 
+			li.mb-4 
+				a(href="tasks.html") Задачи
+			li.mb-4 
+				a(href="task-cards.html") Карточки задач
+			li.mb-4 
+				a(href="privat-chat-creation.html") Окна создания приватного чата
+			li.mb-4 
+				a(href="private-chat.html") Приватный чат
+			li.mb-4 
+				a(href="private-chat-info.html") Информация о приватном чате
+			li.mb-4 
+				a(href="end-privat-chat.html") Завершение приватного чата
+			li.mb-4 
+				a(href="private-chat-tabs.html") Табы приватного чата
+			li.mb-4 
+				a(href="empty-chats.html") Пустые чаты demo
+			li.mb-4 
+				a(href="messages-empty.html") Пустые сообщения
+			li.mb-4 
+				a(href="create-chat.html") Окно создания чата
+			li.mb-4 
+				a(href="side-sheet-chat-info.html") Информация о чате
+			li.mb-4 
+				a(href="message-component.html") Компоненты сообщений
+			li.mb-4 
+				a(href="person-info-sidesheet.html") Информация о человеке/группе
+			li.mb-4 
+				a(href="person-card.html") Информация о человеке в профиле
+			li.mb-4 
+				a(href="assignments.html") Список поручений

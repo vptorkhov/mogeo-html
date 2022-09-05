@@ -1,0 +1,129 @@
+include ../messages/_messages.pug
+include ../chat/_chat.pug
+include ../link/_link.pug
+
+block variables
+	- let bigtext = `<a href='#'>@Пользователь</a>, consectetur adipiscing elit. Morbi vel mi gravida, tincidunt nulla nec, porttitor libero. Vestibulum ut libero vel nunc hendrerit ullamcorper id eu lacus. Curabitur id eleifend nibh.`
+
+mixin about_project()
+	+b.side-sheet 
+		.containers
+			+side-sheet-top("О проекте")
+		.containers
+			+e.P.header О проекте
+			+b
+				+project_info("Кластер", "Восточная сибирь")
+				+project_info("Проект", "Чона")
+				+project_info("Лицензионный участок", "Игнялинский, Южный")
+				+project_info("Скважина", "2И, ГИ")
+			+e.P.header КPI
+			+b
+				+project_info("Бюджет", "16 500 000 ₽ ")
+				+terms("25.01.2019", "25.11.2020")
+				+detailed_description("Качество", "Дельта разогрета. Смятые в складки осадочные породы в высокогорном плато заставляют предположить, что присоединение органического вещества ")
+				+detailed_description("HSE", "Дельта разогрета. Смятые в складки осадочные породы в высокогорном плато заставляют предположить, что присоединение органического вещества ")
+
+mixin solutions()
+	+b.side-sheet 
+		.containers
+			+side-sheet-top("Решения")
+		.containers
+			+e.P.header-mb16 Последнее решение
+			+b.chat-solutions
+				+e.solution
+					+sender('Антон Гаврилов', 'Руководитель проекта')
+					+b.solution-block
+						+message("incoming", bigtext, "15.08.2022 14:48", false, false, false, false, "До 14.09.2022", false, false, true, "14.09.2022") 
+				+e.solution
+					+sender('Антон Гаврилов', 'Руководитель проекта')
+					+b.solution-block
+						+message("incoming", bigtext, "15.08.2022 14:48", false, false, false, false, "До 14.09.2022", false, false, true, "14.09.2022") 
+				+e.solution
+					+sender('Антон Гаврилов', 'Руководитель проекта')
+					+b.solution-block
+						+message("incoming", bigtext, "15.08.2022 14:48", false, false, false, false, "До 14.09.2022", false, false, true, "14.09.2022") 
+					+e.solution
+					+sender('Антон Гаврилов', 'Руководитель проекта')
+					+b.solution-block
+						+message("incoming", bigtext, "15.08.2022 14:48", false, false, false, false, "До 14.09.2022", false, false, true, "14.09.2022") 
+
+mixin privat_chats()
+	+b.side-sheet 
+		.containers
+			+side-sheet-top("Приватные чаты")
+		.containers
+			+e.privat-chats-block 
+				+sender('Антон Гаврилов', 'Руководитель проекта')
+				+b.solution-block
+					+message("incoming", bigtext, "15.08.2022 14:48", true, false, false, false, "До 14.09.2022", false, true, true, "14.09.2022", true)
+				+e.privat-chats-block 
+				+sender('Антон Гаврилов', 'Руководитель проекта')
+				+b.solution-block
+					+message("incoming", bigtext, "15.08.2022 14:48", true, false, false, false, "До 14.09.2022", false, true, true, "14.09.2022", true)
+
+
+mixin media()
+	+b.side-sheet 
+		.containers
+			+side-sheet-top("Медиа")
+		.containers
+			+e.chat-media 
+				+e.image
+					img(src="img/@2x/slide-25.jpg")
+				+e.image
+					img(src="img/@2x/slide-25.jpg")
+				+e.image
+					img(src="img/@2x/slide-25.jpg")
+				+e.image
+					img(src="img/@2x/slide-25.jpg")
+				+e.image
+					img(src="img/@2x/slide-25.jpg")
+				+e.image
+					img(src="img/@2x/slide-25.jpg")
+
+mixin side_sheet_documents()
+	+b.side-sheet
+		.containers 
+			+side-sheet-top("Документы")
+		.containers
+			+document() 
+			+document()
+			+document()
+
+mixin side_sheet_links()
+	+b.side-sheet 
+		.containers
+			+side-sheet-top("Сcылки")
+		.containers
+			+link("https://www.youtube.com/watch?v=5qKYrajRNwohttps://www.youtube.com/watch?v=5qKYrajRNwo") 
+			+link("https://www.youtube.com/watch?v=5qKYrajRNwo")
+			+link("https://www.youtube.com/watch?v=5qKYrajRNwo")
+
+mixin side-sheet-top(title)
+	+b.side-sheet-top
+		+e.BUTTON.return
+			img(src="img/svg/side-sheet-arrow.svg")
+		+e.P.title=title 
+		+e.BUTTON.close
+			img(src="img/svg/close-cross.svg")
+
+mixin project_info(category, info)
+	+b.project-info
+		+e.P.category=category
+		+e.P.info=info
+
+mixin terms(start, end)
+	+b.project-info
+		+e.P.category Сроки
+		.row 
+			.col 
+				+e.P.terms Начало
+				+e.P.info=start
+			.col
+				+e.P.terms Конец
+				+e.P.info--ending=end
+
+mixin detailed_description(category, description)
+	+b.project-info
+		+e.P.category=category 
+		+e.P.description=description

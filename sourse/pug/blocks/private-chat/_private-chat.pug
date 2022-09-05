@@ -1,0 +1,34 @@
+include ../messages/_messages.pug
+include ../chat/_chat.pug
+
+mixin private_chat()
+	+b.private-chat-block
+		+private_chat_topic("Необходимо что то решать. Или все пропало")
+		+private_chat_window()
+		+chat_bar()
+
+mixin private_chat_window()
+	+e.messages.scrollbar-vertical
+		+e.P.date 20 января 2020
+		+e.sender-wrap
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+		+e.block-of-messages
+			+message("incoming", bigtext, "15.08.2022 14:48", false, true)
+			+message("incoming", bigtext, "15.08.2022 14:48", true)
+		+e.sender-wrap
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+		+e.block-of-messages--last
+			+message("incoming", "Lorem ipsum dolor sit amet", "15.08.2022 14:48")
+		+e.block-of-messages--last
+			+message("incomin", "Lorem ipsum dolor sit amet", "15.08.2022 14:48")
+			+message("incomin", bigtext, "15.08.2022 14:48", true)
+		+e.P.date 20 января 2020
+		+new_messages_line()
+		+e.sender-wrap
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+		+e.block-of-messages
+			+message("incoming", bigtext, "15.08.2022 14:48", false, true)
+
+mixin private_chat_topic(topic)
+	+b.private-chat-topic
+		+e.P.text!=`<span>Тема:</span> ${topic}`

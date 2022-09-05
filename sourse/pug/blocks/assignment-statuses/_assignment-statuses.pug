@@ -1,0 +1,32 @@
+mixin assignment_ready()
+	+b.assignment-status--ready 
+		p Готов
+		+icon('status')
+
+mixin assignment_closed()
+	+b.assignment-status--closed
+		p Закрыт
+		+icon('status')
+
+mixin assignment_opened()
+	+b.assignment-status--opened
+		p Открыт
+		+icon('status')
+
+mixin assignment_in-process()
+	+b.assignment-status--in-process
+		p В работе
+		+icon('status')
+
+mixin assignment_tag(name)
+	+b.assignment-tag
+		p=name
+		+icon('close-cross')
+
+mixin assignment_add()
+	+b.BUTTON.assignment-add
+		+icon('plus')
+
+mixin assignment_more(number)
+	+b.assignment-tag
+		p=`Еще ${number}`

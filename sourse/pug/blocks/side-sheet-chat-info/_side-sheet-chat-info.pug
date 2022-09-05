@@ -1,0 +1,57 @@
+include ../private-chat-info/_private-chat-info.pug
+
+mixin side_sheet_chat_info()
+	+b.side-sheet 
+		.containers--private-chat
+				+privat-chat-info-title("Информация")
+		.containers--private-chat
+			+e.P.private-chat-topic-request Название
+			+e.request-number Экомониторинг
+			+attachments_chat()
+			+chat_info_bottom(150) 
+
+mixin privat-chat-info-title(title)
+	+b.side-sheet-top
+		+e.BUTTON.return--private-chat
+			img(src="img/svg/side-sheet-arrow.svg")
+		+e.P.title=title 
+		+e.P.active AКТИВНАЯ
+		+e.circle
+		+e.BUTTON.close
+			img(src="img/svg/close-cross.svg")
+
+mixin attachments_chat()
+	+b.attachments 
+		+attachments_position("info", "О проекте")
+		+attachments_position("solutions", "Решения", 1)
+		+attachments_position("private-chat", "Приватные чаты", 8)
+		+attachments_position("media", "Медия", 3)
+		+attachments_position("documents", "Документы", 7)
+		+attachments_position("clip", "Ссылки", 8)
+
+mixin chat_info_bottom(participants_amount)
+	+e.participants
+		+e.P.private-chat-participants=`УЧАСТНИКИ ${participants_amount}`
+		+e.BUTTON.add.btn 
+			img(src="img/svg/add-circle.svg")
+			p Добавить
+	+chat_participants_list()
+
+mixin chat_participants_list()
+	+b.privat-chat-participants-list.scrollbar-vertical
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)

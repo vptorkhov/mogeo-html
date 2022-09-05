@@ -1,0 +1,121 @@
+@use "sass:math";
+
+.icon {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
+}
+
+.icon-active {
+	font-size:math.div(8,10)*1rem;
+	width: math.div(8,8)*1em;
+}
+.icon-add-chat {
+	font-size:math.div(25,10)*1rem;
+	width: math.div(24,25)*1em;
+}
+.icon-arrow-down {
+	font-size:math.div(13,10)*1rem;
+	width: math.div(8,13)*1em;
+}
+.icon-arrow-left {
+	font-size:math.div(8,10)*1rem;
+	width: math.div(13,8)*1em;
+}
+.icon-basket {
+	font-size:math.div(24,10)*1rem;
+	width: math.div(22,24)*1em;
+}
+.icon-chat-menu {
+	font-size:math.div(20,10)*1rem;
+	width: math.div(20,20)*1em;
+}
+.icon-check {
+	font-size:math.div(8,10)*1rem;
+	width: math.div(8,8)*1em;
+}
+.icon-close-cross {
+	font-size:math.div(14,10)*1rem;
+	width: math.div(16,14)*1em;
+}
+.icon-delete {
+	font-size:math.div(24,10)*1rem;
+	width: math.div(24,24)*1em;
+}
+.icon-fb {
+	font-size:math.div(24,10)*1rem;
+	width: math.div(24,24)*1em;
+}
+.icon-file {
+	font-size:math.div(24,10)*1rem;
+	width: math.div(24,24)*1em;
+}
+.icon-instagram {
+	font-size:math.div(24,10)*1rem;
+	width: math.div(24,24)*1em;
+}
+.icon-key {
+	font-size:math.div(11,10)*1rem;
+	width: math.div(16,11)*1em;
+}
+.icon-link {
+	font-size:math.div(10,10)*1rem;
+	width: math.div(20,10)*1em;
+}
+.icon-lock {
+	font-size:math.div(24,10)*1rem;
+	width: math.div(24,24)*1em;
+}
+.icon-message {
+	font-size:math.div(16,10)*1rem;
+	width: math.div(16,16)*1em;
+}
+.icon-microphone {
+	font-size:math.div(30,10)*1rem;
+	width: math.div(30,30)*1em;
+}
+.icon-most-popular {
+	font-size:math.div(5,10)*1rem;
+	width: math.div(6,5)*1em;
+}
+.icon-plus {
+	font-size:math.div(24,10)*1rem;
+	width: math.div(24,24)*1em;
+}
+.icon-private {
+	font-size:math.div(12,10)*1rem;
+	width: math.div(14,12)*1em;
+}
+.icon-seen {
+	font-size:math.div(14,10)*1rem;
+	width: math.div(24,14)*1em;
+}
+.icon-side-sheet-arrow {
+	font-size:math.div(12,10)*1rem;
+	width: math.div(19,12)*1em;
+}
+.icon-status {
+	font-size:math.div(16,10)*1rem;
+	width: math.div(16,16)*1em;
+}
+.icon-telegram {
+	font-size:math.div(16,10)*1rem;
+	width: math.div(16,16)*1em;
+}
+.icon-three {
+	font-size:math.div(24,10)*1rem;
+	width: math.div(24,24)*1em;
+}
+.icon-viber {
+	font-size:math.div(16,10)*1rem;
+	width: math.div(16,16)*1em;
+}
+.icon-vk {
+	font-size:math.div(24,10)*1rem;
+	width: math.div(24,24)*1em;
+}
+.icon-whatsapp {
+	font-size:math.div(16,10)*1rem;
+	width: math.div(16,16)*1em;
+}

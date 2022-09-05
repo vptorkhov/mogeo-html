@@ -1,0 +1,36 @@
+extends ../layout/main.pug
+include ../blocks/message-component/_message-component.pug
+
+block variables
+	- let  mainPage= null
+	- let  bg= null
+block title
+	- let  title= index.head.title
+	title= title
+	- let bigtext = `<a href='#'>Антон Паин:</a> consectetur adipiscing elit. Morbi vel mi gravida, tincidunt nulla nec, porttitor libero. Vestibulum ut libero vel nunc hendrerit ullamcorper id eu lacus. Curabitur id eleifend nibh.`
+block pagecontent
+	.p-5
+		.row(style="background-color: grey;")
+			.col.p-4(style="display: flex; flex-wrap: wrap; gap: 32px; max-width: 456px;")
+				+message_component(bigtext)
+		.row(style="background-color: grey;")
+			.col.p-4(style="display: flex; flex-wrap: wrap; gap: 32px; max-width: 456px;")
+				+message_component_unread(bigtext, 7)
+		.row(style="background-color: grey;")
+			.col.p-4(style="display: flex; flex-wrap: wrap; gap: 32px; max-width: 456px;")
+				+message_component_active(bigtext, 9)
+		.row(style="background-color: grey;")
+			.col.p-4(style="display: flex; flex-wrap: wrap; gap: 32px; max-width: 456px;")
+				+message_component_active(bigtext, false)
+		.row(style="background-color: grey;")
+			.col.p-4(style="display: flex; flex-wrap: wrap; gap: 32px; max-width: 456px;")
+				+message_group_component(bigtext)
+		.row(style="background-color: grey;")
+			.col.p-4(style="display: flex; flex-wrap: wrap; gap: 32px; max-width: 456px;")
+				+message_group_component_unread(bigtext, 7)
+		.row(style="background-color: grey;")
+			.col.p-4(style="display: flex; flex-wrap: wrap; gap: 32px; max-width: 456px;")
+				+message_group_component_active(bigtext, 9)
+		.row(style="background-color: grey;")
+			.col.p-4(style="display: flex; flex-wrap: wrap; gap: 32px; max-width: 456px;")
+				+message_group_component_active(bigtext, false)

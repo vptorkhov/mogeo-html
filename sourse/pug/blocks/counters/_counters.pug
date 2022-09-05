@@ -1,0 +1,11 @@
+mixin counter_requests(num)
+	if num
+		+b.counter-requests
+			img(src="img/svg/arrow-down.svg")
+			+e.P.num=num
+
+mixin counter_new_messages(num)
+	if num
+		+b.counter-new-messages
+			img(src="img/svg/message.svg")
+			+e.P.num=num

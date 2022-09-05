@@ -1,0 +1,14 @@
+include ../privat-chat-creation/_privat-chat-creation.pug
+
+mixin end_privat_chat()
+	+b.side-sheet
+		.containers
+			+privat-chat-side-sheet("Добавить решение")
+		.containers-end-chat
+			+e.P.solution-header!=`Комментарий <span>*</span>`
+			textarea(type="text", rows=6, placeholder="Введите текст решения")
+			+e.BUTTON.add-file 
+				img(src="img/svg/add-circle.svg")
+				p Добавить файл
+			+b.private-chat-create-button 
+				button.btn-normal.btn.btn-full-width Завершить обсуждение приватного чата

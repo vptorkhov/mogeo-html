@@ -1,0 +1,31 @@
+mixin person_card()
+	+b.person-card
+		+e.photo
+			img(src="img/@2x/slide-25.jpg")
+		+e.info 
+			+e.P.fio Гаврилов Антон <br>Борисович
+			+e.personal-chat 
+				img(src="img/svg/add-chat.svg")
+				p Пероснальный чат
+			.container-mb16
+				p.side-sheet__online Был(а) в сети 12 минут назад
+			.container-mb24
+				+e.P.status В отпуске с 12.06.2020 по 12.07.2020
+			.container-mb24
+				+person-info("Должность", "Начальник отдела ИТАТ ООО “ГПН-ГЕО”")
+			.container-mb24
+				+person-info("Руководитель", "Константинопольский Константин Константинович ")
+			.container-mb24
+				+person-info("Отдел", "ИТАТ ООО “ГПН-ГЕО”")
+			.container-mb24
+				+person-info("Организация ", "ПАО “Газпром”")
+			.container-mb24
+				+person-info("Рабочий телефон", "+7 (812) 449-70-33  доб. (061) 4455")
+			.container-mb24
+				+person-info("Мобильный телефон", "+7 (911) 942-43-41")
+			.container-mb24
+				+person-info("E-mail", "Gavrilov.AB@gazprom-neft.ru")
+
+mixin person-info(category, info)
+	p.project-info__category=category
+	p.project-info__info=info

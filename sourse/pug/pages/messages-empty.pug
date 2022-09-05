@@ -1,0 +1,12 @@
+extends ../layout/main.pug
+include ../blocks/messages-empty/_messages-empty.pug
+
+block variables
+	- let  mainPage= null
+	- let  bg= null
+block title
+	- let  title= index.head.title
+	title= title
+block pagecontent
+	.p-sm-5(style="background-color: grey; height: 100vh; display: flex; justify-content: center;")
+		+messages_empty()

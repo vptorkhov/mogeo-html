@@ -1,0 +1,37 @@
+.counter-requests,
+.counter-new-messages {
+	display: flex;
+	align-items: center;
+	padding: 5px;
+	border-radius: 7px;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 14px;
+	.icon {
+		margin-right: 5px;
+	}
+}
+.counter-requests {
+	background-color: #56b9f2;
+	color: #ffffff;
+	margin-right: 12px;
+	&:last-child {
+		margin-right: 0px;
+	}
+	.icon.icon-arrow-down {
+		stroke: #ffffff;
+		height: 16px;
+		width: 10px;
+	}
+	img {
+		margin-right: 5px;
+	}
+}
+.counter-requests, .counter-new-messages {
+	img {
+		margin-right: 5px;
+	}
+}
+.counter-new-messages {
+	background-color: var(--grey-blue);
+}

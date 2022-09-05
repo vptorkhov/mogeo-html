@@ -1,0 +1,97 @@
+mixin private_chat_tab_task(place, name)
+	+b.private-chat-tab(tabindex=1)
+		+e.P.place=place
+		+e.P.name=name
+		+e.P.task Задача
+
+mixin private_chat_tab_task_class-active(place, name)
+	+b.private-chat-tab.active(tabindex=1)
+		+e.P.place=place
+		+e.P.name=name
+		+e.P.task Задача
+
+mixin private_chat_tab_task-disabled(place, name)
+	+b.private-chat-tab.disabled(tabindex=1)
+		+e.P.place=place
+		+e.P.name=name
+		+e.P.task Неактивен
+
+mixin private_chat_tab_request-active(place, request_number)
+	+b.private-chat-tab(tabindex=1)
+		+e.P.place=place
+		+e.icon-and-name
+			+icon('lock')
+			+e.P.request=` Запрос №${request_number}`
+		+e.P.task Приватный чат активен
+
+mixin private_chat_tab_request-active_class-active(place, request_number)
+	+b.private-chat-tab.active(tabindex=1)
+		+e.P.place=place
+		+e.icon-and-name
+			+icon('lock')
+			+e.P.request=` Запрос №${request_number}`
+		+e.P.task Приватный чат активен
+
+mixin private_chat_tab_request-closed(place, request_number)
+	+b.private-chat-tab.closed(tabindex=1)
+		+e.P.place=place
+		+e.icon-and-name
+			+icon('lock')
+			+e.P.request=` Запрос №${request_number}`
+		+e.P.task Приватный чат закрыт
+
+mixin private_chat_tab_request-closed_class-active(place, request_number)
+	+b.private-chat-tab.closed.active(tabindex=1)
+		+e.P.place=place
+		+e.icon-and-name
+			+icon('lock')
+			+e.P.request=` Запрос №${request_number}`
+		+e.P.task Приватный чат закрыт
+
+mixin private_chat_tab_request-active-disabled(place, request_number)
+	+b.private-chat-tab.disabled(tabindex=1)
+		+e.P.place=place
+		+e.icon-and-name
+			+icon('lock')
+			+e.P.request=` Запрос №${request_number}`
+		+e.P.task Неактивен
+
+mixin private_chat_tab_theme-active(place, theme)
+	+b.private-chat-tab(tabindex=1)
+		+e.P.place=place
+		+e.icon-and-name
+			+icon('lock')
+			+e.P.request=theme
+		+e.P.task Приватный чат активен
+
+mixin private_chat_tab_theme-active_class-active(place, theme)
+	+b.private-chat-tab.active(tabindex=1)
+		+e.P.place=place
+		+e.icon-and-name
+			+icon('lock')
+			+e.P.request=theme
+		+e.P.task Приватный чат активен
+
+mixin private_chat_tab_theme-closed(place, theme)
+	+b.private-chat-tab.closed(tabindex=1)
+		+e.P.place=place
+		+e.icon-and-name
+			+icon('lock')
+			+e.P.request=theme
+		+e.P.task Приватный чат закрыт
+
+mixin private_chat_tab_theme-closed_class-active(place, theme)
+	+b.private-chat-tab.closed.active(tabindex=1)
+		+e.P.place=place
+		+e.icon-and-name
+			+icon('lock')
+			+e.P.request=theme
+		+e.P.task Приватный чат закрыт
+
+mixin private_chat_tab_theme-active-disabled(place, theme)
+	+b.private-chat-tab.disabled(tabindex=1)
+		+e.P.place=place
+		+e.icon-and-name
+			+icon('lock')
+			+e.P.request=theme
+		+e.P.task Неактивен

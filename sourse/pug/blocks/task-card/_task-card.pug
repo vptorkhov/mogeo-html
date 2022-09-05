@@ -1,0 +1,52 @@
+include ../messages/_messages.pug
+include ../counters/_counters.pug
+
+mixin task_card(activity_type, progress, status, start, end, work_type, work_name, private, total_participants, more, requests, new_messages)
+	+b.task-card(class=status + (activity_type=="disabled" ? " disabled" : ''), tabindex=1)
+		+task_card_progress(activity_type, progress)
+		+card_task_terms(activity_type, start, end)
+		+e.P.work-type=work_type
+		+e.work-name
+			if private 
+				img(src="img/svg/lock.svg")
+			p=work_name
+		+e.P.total-participants=total_participants
+		+e.avatars-and-chat-info
+			+e.task-card-avatars
+				+card_task_avatar(more)
+				+card_task_avatar(more)
+				+card_task_avatar(more)
+				+card_task_avatar(more)
+				+card_task_avatar(more)
+			+e.chat-info
+				+counter_requests(requests)
+				+counter_new_messages(new_messages)
+		if (activity_type=='draft')
+			+e.draft-options 
+				button.btn.btn-secondary.btn-full-width Опубликовать
+				+e.BUTTON.delete-btn
+					img(src="img/svg/delete.svg")
+		if (activity_type=='closed')
+			+e.closed-options 
+				button.btn.btn-secondary.btn-full-width Вернуть в работу
+
+mixin card_task_terms(activity_type, start, end)
+	+b.card-task-terms
+		+e.card-task-terms-start
+			+e.P.start Начало
+			+e.P.start-date=start
+		img(src="img/svg/arrow-right.svg")
+		+e.card-task-terms-end
+			+e.P.end Окончание
+			+e.P.end-date(class=activity_type)=end
+
+mixin card_task_avatar(more)
+	+e.avatar 
+		img(src="img/@2x/slide-25.jpg")
+		+e.more=`+` + `${more}`
+
+mixin task_card_progress(activity_type, progress)
+	+b.task-card-progress
+		+e.task-card-progress-bar(class=activity_type)
+			+e.task-card-progress-dot(class=activity_type, style=`left: calc(${progress}% - 3px);`)
+

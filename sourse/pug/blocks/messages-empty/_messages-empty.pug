@@ -1,0 +1,8 @@
+mixin messages_empty()
+	+b.messages-list
+		+e.title 
+			p Сообщения
+		+e.messages-empty 
+			p У вас пока нет<br>переписок, чтобы начать, нажмите “+”
+			+e.BUTTON.btn
+				+icon('plus')

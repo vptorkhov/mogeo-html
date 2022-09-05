@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+
+.chat-window {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	&__chat-block {
+		height: 100%;
+		&-right {
+			flex-grow: 1;
+		}
+	}
+}
+
+.chats-top-bar  {
+	padding: 12px 34px 12px 18px;
+	font-style: normal;
+	display: flex;
+	justify-content: space-between;
+	&__page-title, &__title {
+		font-family: 'JetBrains Mono';
+		display: flex;
+		font-weight: 500;
+		font-size: 24px;
+		line-height: 100%;
+		letter-spacing: -0.408px;
+	}
+	&__page-title {
+		color: var(--main-black);
+	}
+	&__title {
+		color: var(--heavy-blue);
+		margin-left: 5px;
+	}
+	&__page-top-buttons {
+		display: flex;
+		gap: 8px;
+	}
+}
+
+.chats-sidebar {
+	padding: 9px 8px 24px;
+}
+
+.top-bar-button {
+	display: flex;
+	align-items: center;
+	padding: 8px 12px;
+	background-color: #ffffff;
+	border: 1px solid #CCD9E0;
+	border-radius: 8px;
+	&__icon {
+		width: 24px;
+		height: 24px;
+		margin-right: 10px;
+	}
+	&__title {
+		font-style: normal;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 16px;
+		color: var(--main-grey);
+	}
+}

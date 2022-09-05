@@ -1,0 +1,38 @@
+.private-chat-block {
+	&__messages {
+		background-color: #DEE5E9;
+		background-image: url(/img/svg/grey-key.svg);
+		background-repeat: repeat;
+		background-size: 110px;
+		margin-top: -45px;
+		padding: 65px 20px 0;
+		@media screen and (max-width: 744px) {
+			padding: 65px 16px 0;
+			margin-top: -38px;
+		}
+	}
+}
+.private-chat-topic {
+	background-color: #002033;
+	border-radius: 0px 0px 7px 7px;
+	padding: 12px 20px;
+	position: relative;
+	z-index: 1000000;
+	&__text {
+		color: #FFFFFF;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 130%;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		span {
+			color: #33B4FF;
+		}
+		@media screen and (max-width: 744px) {
+			font-weight: 400;
+			font-size: 12px;
+			line-height: 14px;
+		}
+	}
+}

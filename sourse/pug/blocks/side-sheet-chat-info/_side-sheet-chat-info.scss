@@ -1,0 +1,51 @@
+.side-sheet-top {
+	&__active {
+		background: var(--main-red);
+		border-radius: 4px;
+		padding: 3px 6px 2px; 
+		font-style: normal;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 19px;
+		color: #FFFFFF;
+		margin-left: 12px;
+		@media screen and (max-width: 744px) {
+			margin-left: auto;
+			font-weight: 500;
+			font-size: 12px;
+			line-height: 14px;
+			padding: 1px 4px;
+		}
+	}
+	&__circle {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		background-color: var(--main-red);
+		margin-left: 12px;
+		margin-right: auto;
+		@media screen and (max-width: 744px) {
+			width: 8px;
+			height: 8px;
+			margin-right: 0;
+		}
+	}
+}
+
+.side-sheet {
+	&__participants {
+		display: flex;
+		align-items: center;
+	}
+	&__add {
+		display: flex;
+		margin-left: auto;
+		gap: 12px;
+		color: var(--survey-blue);
+		padding: 0;
+		border: none;
+		--bs-btn-active-color: var(--survey-blue);
+		--bs-btn-color: var(--survey-blue);
+		--bs-btn-hover-color: var(--survey-blue);
+	}
+}

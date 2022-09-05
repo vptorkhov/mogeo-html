@@ -1,0 +1,28 @@
+mixin empty_chats()
+	+b.chat-window
+		+e.chat-block
+			+chats_sidebar()
+		+e.chat-block-right
+			+chats_top_bar('Лог')
+
+
+mixin chats_top_bar(title)
+	+b.chats-top-bar
+		+e.page-title
+			+e.P.GEO GEO
+			+e.P.title!=`${title}`
+		+e.page-top-buttons
+			+top_bar_button("tasks", "Задачи")
+			+top_bar_button("request-cycle", "Запросы")
+			+top_bar_button("message-with-text", "Сообщения")
+
+
+mixin chats_sidebar(icon, title)
+	+b.chats-sidebar
+		p psdocspdo
+
+mixin top_bar_button(icon, title)
+	+b.BUTTON.top-bar-button
+		+e.SVG.icon 
+			image(xlink:href=`/img/svg/${icon}.svg`)
+		+e.P.title=title

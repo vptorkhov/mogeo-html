@@ -1,0 +1,169 @@
+include ../document/_document.pug
+
+mixin message(status, text, date, document, table, my_request, another_request, terms, reply, reply_request, solution, solution_date, private, survey_results, survey_before, survey_radio)
+	+b.message(class=(status=="incoming" ? "--incoming" : "--sent"))
+		+e.content
+			+private-chat(private) 
+			+reply_request(reply_request, text)
+			+reply(reply, text)
+			+request(my_request, another_request, terms)
+			+solution(solution, solution_date)
+			+e.text(class=(survey_results || survey_before || survey_radio ? "--survey-question" : ""))!=text
+			if document
+				+documents()
+			if table 
+				+table()
+			+survey-results(survey_results, 40, '14.08.2022, 16:00')
+			+survey-checkbox(survey_before, 40)
+			+survey-radio(survey_radio, 40)
+			+in_private_chat(private)
+			+e.date=date
+				if status!="incoming"
+					+icon("seen")
+			
+
+mixin survey-results(survey, total, until)
+	if survey
+		+b.survey
+			+e.info
+				p Публичный опрос
+				+e.until-date=`До ${until}`
+			+survey_vaiant(25, "Реализация намеченных плановых заданий бодрит", 5)
+			+survey_vaiant(55, "Реализация намеченных плановых заданий бодрит", 11, true)
+			+survey_vaiant(20, "Реализация намеченных плановых заданий бодрит", 4)
+			button.btn.btn-secondary.btn-full-width Результаты
+			+e.total=`Всего ${total} голосов`
+
+mixin survey-checkbox(survey, total)
+	if survey
+		+b.survey
+			+e.info
+				p Публичный опрос
+			+survey_vaiant_checkbox(25, "Реализация намеченных плановых заданий бодрит", 5)
+			+survey_vaiant_checkbox(55, "Эксперты утверждают, что неподкупность государственных СМИ оказалась ошибочной", 11, true)
+			+survey_vaiant_checkbox(20, "Реализация намеченных плановых заданий бодрит", 4)
+			button.btn.btn-secondary.btn-full-width Голосовать
+			+e.total=`Всего ${total} голосов`
+
+mixin survey-radio(survey, total)
+	if survey
+		+b.survey
+			+e.info
+				p Анонимный опрос
+			+survey_vaiant_radio(25, "Реализация намеченных плановых заданий бодрит", 5)
+			+survey_vaiant_radio(55, "Эксперты утверждают, что неподкупность государственных СМИ оказалась ошибочной", 11, true)
+			+survey_vaiant_radio(20, "Реализация намеченных плановых заданий бодрит", 4)
+			+e.total=`Всего ${total} голосов`
+
+mixin reply_request(reply_request, text)
+	if reply_request 
+		+e.reply-request 
+			+e.request--another
+				+request_body("Запрос №1")
+				+icon("arrow-left")
+				+e.P.reply-to--request Оксана Иванова
+			+e.reply-message
+				p!=text
+
+mixin reply(reply, text)
+	if reply 
+		+e.reply-request 
+			+e.request--another.reply
+				+e.P.reply-to Оксана Иванова
+			+e.reply-message
+				p!=text
+
+mixin solution(solution, solution_date)
+	if solution 
+		+e.request--solution
+			+solution_body("Решение №15") 
+			+e.P.solution-date=solution_date 
+
+mixin private-chat(private)
+	if private 
+		+e.request--private 
+			+private_body("Приватный чат завершён") 
+			+e.P.enter-chat Войти
+
+mixin request(my_request, another_request, terms)
+	+e.request(class=(my_request ? "--my" : another_request ? "--another" : "--none")) 
+		+request_body("Запрос №1", my_request) 
+		+e.P.request-date(class=(my_request ? "--my" : another_request ? "--another" : "--none"))=terms
+
+mixin request_body(text, my_request)
+	+e.chip-body-request(class=(my_request ? "--my" : "--another")) 
+		+icon("arrow-down")
+		p=text
+
+mixin solution_body(text)
+	+e.chip-body-solution
+		p=text
+
+mixin private_body(text)
+	+e.chip-body-private 
+		img(src="img/svg/private.svg")
+		p=text
+
+mixin documents()
+	+e.documents
+		+document()
+		+document()
+mixin table()
+	+e.table
+		table 
+			tr 
+				th.header Текущие параметры:
+			tr 
+				td.name Скорость откачки
+				td.value ~ 4.7 см3/с
+			tr 
+				td.name Давление отбора (депрессия на пласт 108 атм)
+				td.value ~ 4.7 см3/с
+			tr 
+				td.name Скорость откачки
+				td.value ~ 4.7 см3/с
+
+mixin in_private_chat(private)
+	if private
+		+e.avatars
+			+avatar()
+			+avatar()
+			+avatar()
+			+avatar()
+			+avatar()
+			+avatar()
+			+avatar()
+
+
+mixin avatar()
+	+e.avatar 
+		img(src="img/@2x/slide-25.jpg")
+
+mixin survey_vaiant(progress, answer, votes, most_popular)
+	+b.survey-variant
+		+e.answer-variant
+			p=answer
+		+e.progress-bar-wrap
+			+e.progress-bar-bg
+			+e.progress-bar(style=`width:${progress}%`)
+		+e.votes-and-percents 
+			+e.P.votes=`${votes} голосов`
+			+e.percents
+				if most_popular
+					+e.most-popular 
+						+icon("check")
+				p=`${progress}%`
+
+mixin survey_vaiant_checkbox(progress, answer, votes, most_popular)
+	+b.survey-variant-checkbox
+		table 
+			tr 
+				td 
+					+in-c("checkbox", answer)
+
+mixin survey_vaiant_radio(progress, answer, votes, most_popular)
+	+b.survey-variant-checkbox
+		table 
+			tr 
+				td 
+					+in-c("radio", answer)

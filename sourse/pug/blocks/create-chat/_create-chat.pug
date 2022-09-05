@@ -1,0 +1,94 @@
+include ../privat-chat-creation/_privat-chat-creation.pug
+
+mixin create-chat-add-people()
+	+b.create-chat--dialog 
+		+e.top 
+			+e.P.title Создать чат
+			+e.BUTTON.close
+				+icon('close-cross')
+		+e.main-content 
+			+b.participants-search-block
+				+participants_search()
+				+e.BUTTON.decline 
+					p Отмена
+			+e.P.section КОНТАКТЫ
+			+e.added-people 
+				+sender('Антон Гаврилов', 'Руководитель проекта')
+				+e.BUTTON.delete.btn
+					+icon("delete")
+			+e.alphabet-list.scrollbar-vertical
+				+letter_name_match2('A')
+			+e.bottom-buttons 
+				+e.BUTTON.cancel.btn-secondary.btn Назад
+				+e.BUTTON.next.btn-fill.btn Далее
+
+mixin create-chat-start(img)
+	+b.create-chat--start
+		+e.top 
+			+e.P.title Создать чат
+			+e.BUTTON.close
+				+icon('close-cross')
+		+e.main-content.scrollbar-vertical
+			+e.info-wrap
+				+e.img-block
+					if img
+						+e.BUTTON.chat-pic-change--with-pic
+							img(src="img/chat-pic.png", alt="")
+					else
+						+e.BUTTON.chat-pic-change
+							+icon('plus')
+				+e.name-block
+					.create-chat__input-wrap.form-group
+						label
+							span.create-chat__input-title Название группы <span class="requiry-star">*</span>
+							input.create-chat__input.form-control(name='text' type='text' placeholder='Введите название')
+			+e.bottom-buttons 
+				+e.BUTTON.cancel.btn-secondary.btn Назад
+				if img
+					+e.BUTTON.next.btn-fill.btn Далее
+				else
+					+e.BUTTON.next.btn-fill.btn.disabled Далее
+
+
+mixin create-chat-roles()
+	+b.create-chat--dialog
+		+e.top 
+			+e.P.title Создать чат
+			+e.BUTTON.close
+				+icon('close-cross')
+		+e.main-content.scrollbar-vertical
+			+e.roles
+				+e.roles-title РОЛИ УЧАСТНИКОВ
+				mixin item()
+					+e.role-person
+						.create-chat__added-people
+							.sender
+								.sender__avatar
+									img(src='img/@2x/slide-25.jpg')
+								.sender__name-and-position
+									p.sender__name Антон Гаврилов
+									p.sender__position
+										span Руководитель проекта
+										span Руководитель проекта
+							button.create-chat__delete.btn
+								svg.icon.icon-delete
+									use(xlink:href='img/svg/sprite.svg#delete')
+						.create-chat__input-wrap.form-group
+							label
+								+e.role-select-head
+									span.create-chat__input-title Роль
+									+e.role-select-reset(href="#") Сбросить
+								select.create-chat__input.form-select(name='select')
+									option(value='Администратор') Администратор
+									option(value=' placeholder 1') placeholder 1
+									option(value=' placeholder 2') placeholder 2
+									option(value=' placeholder 3') placeholder 3
+									option(value=' placeholder 4') placeholder 4
+				+item
+				+item
+				+item
+			+e.alphabet-list
+					+letter_name_match2('A')
+			+e.bottom-buttons 
+				+e.BUTTON.cancel.btn-secondary.btn Назад
+				+e.BUTTON.next.btn-fill.btn Далее

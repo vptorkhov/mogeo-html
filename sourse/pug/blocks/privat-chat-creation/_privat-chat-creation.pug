@@ -1,0 +1,118 @@
+include ../chat-info/_chat-info.pug
+
+mixin privat_chat_creation(from)
+	+b.side-sheet 
+		if from=='task'
+			.containers--private-chat
+				+privat-chat-side-sheet("Новый приватный чат")
+			.containers--private-chat
+				+e.container-mb24
+					+e.P.private-chat-topic-request Тема приватного чата
+					textarea(type="text", rows=2,  placeholder="Введите название темы")
+				+private_chat_creation_bottom() 
+		else 
+			.containers--private-chat
+				+privat-chat-side-sheet("Новый приватный чат из запроса")
+			.containers--private-chat
+				+e.container-mb24
+					+e.P.private-chat-topic-request Тема (связанный запрос)
+					+e.request-number Запрос №12012
+					+e.P.text!=bigtext 
+				+private_chat_creation_bottom() 
+			
+
+mixin privat-chat-side-sheet(title)
+	+b.side-sheet-top
+		+e.BUTTON.return--private-chat
+			img(src="img/svg/side-sheet-arrow.svg")
+		+e.P.title=title 
+		+e.BUTTON.close
+			img(src="img/svg/close-cross.svg")
+
+mixin participants_search()
+	+b.participants-search(tabindex="1")
+		+e.BUTTON.btn
+			img(src="img/svg/search.svg")
+		input(type="text", placeholder="Поиск")
+
+mixin private_chat_creation_bottom(participants_amount)
+	if participants_amount
+		+e.P.private-chat-participants=`УЧАСТНИКИ ${participants_amount}`
+	else
+		+e.P.private-chat-participants УЧАСТНИКИ
+	+b.participants-search-block
+		+participants_search()
+		+e.BUTTON.decline 
+			p Отмена
+			img.cross(src="img/svg/blue-cross.svg")
+	+best_name_match()
+	+letter_name_match('A')
+	+b.private-chat-create-button 
+		button.btn-normal.btn.btn-full-width Создать приватный чат
+
+mixin best_name_match()
+	+b.privat-chat-added-people
+		+e.best-name-match-variant-top
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+			+e.BUTTON.delete.btn
+				+icon("delete")
+		+e.best-name-match-variant-top
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+			+e.BUTTON.delete.btn
+				+icon("delete")
+
+mixin letter_name_match(letter)
+	+b.best-name-match-alphabet.scrollbar-vertical
+		+e.P.letter=letter
+		+e.best-name-match-variant
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+		+e.best-name-match-variant
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+		+e.P.letter=letter
+		+e.best-name-match-variant
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+		+e.best-name-match-variant
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+		+e.P.letter=letter
+		+e.best-name-match-variant
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+		+e.best-name-match-variant
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+		+e.P.letter=letter
+		+e.best-name-match-variant
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+		+e.best-name-match-variant
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+		+e.P.letter=letter
+		+e.best-name-match-variant
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+		+e.best-name-match-variant
+			+sender('Антон Гаврилов', 'Руководитель проекта')
+
+mixin letter_name_match2(letter)
+	+b.best-name-match-alphabet.scrollbar-vertical
+		+e.P.letter=letter
+		+e.best-name-match-variant
+			+sender2('Антон Гаврилов', 'Руководитель проекта')
+		+e.best-name-match-variant
+			+sender2('Антон Гаврилов', 'Руководитель проекта')
+		+e.P.letter=letter
+		+e.best-name-match-variant
+			+sender2('Антон Гаврилов', 'Руководитель проекта')
+		+e.best-name-match-variant
+			+sender2('Антон Гаврилов', 'Руководитель проекта')
+		+e.P.letter=letter
+		+e.best-name-match-variant
+			+sender2('Антон Гаврилов', 'Руководитель проекта')
+		+e.best-name-match-variant
+			+sender2('Антон Гаврилов', 'Руководитель проекта')
+		+e.P.letter=letter
+		+e.best-name-match-variant
+			+sender2('Антон Гаврилов', 'Руководитель проекта')
+		+e.best-name-match-variant
+			+sender2('Антон Гаврилов', 'Руководитель проекта')
+		+e.P.letter=letter
+		+e.best-name-match-variant
+			+sender2('Антон Гаврилов', 'Руководитель проекта')
+		+e.best-name-match-variant
+			+sender2('Антон Гаврилов', 'Руководитель проекта')

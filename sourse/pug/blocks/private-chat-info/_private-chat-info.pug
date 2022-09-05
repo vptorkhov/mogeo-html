@@ -1,0 +1,115 @@
+include ../privat-chat-creation/_privat-chat-creation.pug
+include ../chat-info/_chat-info.pug
+
+mixin privat_chat_info(from)
+	+b.side-sheet 
+		.containers--private-chat
+				+privat-chat-info-title("Информация")
+		if from=='task'
+			.containers--private-chat
+				+e.container
+					+e.P.private-chat-topic-request Тема
+					+e.request-number Тема приватного чата
+				+e.container
+					.wrap-pb4
+						+e.P.private-chat-topic-request Автор
+					+sender("Оксана Иванова", "Исполнитель")
+				+project_terms_info("25.01.2019", false)
+				+attachments()
+				+private_chat_info_bottom(150) 
+		else 
+			.containers--private-chat
+				+e.container
+					+e.P.private-chat-topic-request Тема (связанный запрос)
+					+e.request-number Запрос №12012
+					+e.P.text!=bigtext 
+				+e.container
+					+e.P.private-chat-topic-request Автор
+					+sender("Оксана Иванова", "Исполнитель")
+				+project_terms_info("25.01.2019", "18.08.2020")
+				+attachments()
+				+private_chat_info_bottom() 
+
+mixin privat-chat-info-title(title)
+	+b.side-sheet-top
+		+e.BUTTON.return--private-chat
+			img(src="img/svg/side-sheet-arrow.svg")
+		+e.P.title=title 
+		+e.P.text ПРИВАТНЫЙ ЧАТ
+		+e.BUTTON.close
+			img(src="img/svg/close-cross.svg")
+
+mixin project_terms_info(start, end)
+	+b.project-info
+		+e.P.category Сроки
+		.row 
+			.col 
+				+e.P.terms-mb4 Открыт
+				+e.P.info=start
+			.col
+				+e.P.terms-mb4 Закрыт
+				if end
+					+e.P.info=end
+				else 
+					+e.P.info--ending -
+
+mixin attachments()
+	+b.attachments 
+		+attachments_position("checklist", "Чек-лист", 4)
+		+attachments_position("solutions", "Решение", 1)
+		+attachments_position("media", "Медия", 3)
+		+attachments_position("documents", "Документы", 7)
+		+attachments_position("clip", "Ссылки", 8)
+
+mixin attachments_position(icon, name, amount)
+	+b.attachments-position(href="#")
+		img(src=`/img/svg/${icon}.svg`)
+		+e.P.name=name
+		+e.P.amount=amount
+	
+mixin attachments_position_delete()
+	+b.attachments-position(href="#")
+		img(src=`/img/svg/delete.svg`)
+		+e.P.delete Удалить
+
+mixin private_chat_info_bottom(participants_amount)
+	+e.participants
+		if participants_amount
+			+e.P.private-chat-participants=`УЧАСТНИКИ ${participants_amount}`
+		else
+			+e.P.private-chat-participants УЧАСТНИКИ
+		+e.BUTTON.add.btn 
+			img(src="img/svg/add-circle.svg")
+			p Добавить
+	+privat_chat_participants_list()
+
+mixin privat_chat_participants_list()
+	+b.privat-chat-participants-list.scrollbar-vertical
+		+privat_chat_participant(false)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+		+privat_chat_participant(true)
+
+
+
+mixin privat_chat_participant(notadmin)
+	+b.privat-chat-participant
+		+sender('Антон Гаврилов', 'Руководитель проекта')
+		//- +e.BUTTON.add-chat.btn
+		//- 	img(src="img/svg/add-chat.svg")
+		//- if notadmin
+		//- 	+e.BUTTON.delete.btn
+		//- 		+icon("delete")

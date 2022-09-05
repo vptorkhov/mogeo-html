@@ -1,0 +1,91 @@
+include ../counters/_counters.pug
+
+mixin message_component(text)
+	+b.message-component 
+		+e.wrap
+			+e.P.date 13.07.2020 13:56
+			+b.message-info 
+				+e.IMG.avatar(src="img/@2x/slide-25.jpg")
+				+b.message-texts 
+					+e.flex
+						+e.name Денис Лачугин
+					+e.text!=text
+
+mixin message_component_unread(text, newm)
+	+b.message-component.unread 
+		+e.wrap
+			+e.P.date 13.07.2020 13:56
+			+b.message-info 
+				+e.IMG.avatar(src="img/@2x/slide-25.jpg")
+				+b.message-texts.unread 
+					+e.flex
+						+e.name Денис Лачугин
+					+e.text!=text
+				+e.message-counter
+					+counter_new_messages(7)
+
+mixin message_component_active(text, newm)
+	+b.message-component.active 
+		+e.wrap
+			+e.P.date 13.07.2020 13:56
+			+b.message-info 
+				+e.IMG.avatar(src="img/@2x/slide-25.jpg")
+				if newm
+					+b.message-texts.unread 
+						+e.flex
+							+e.name Денис Лачугин
+						+e.text!=text
+					+e.message-counter
+						+counter_new_messages(9)
+				else 
+					+b.message-texts
+						+e.flex
+							+e.name Денис Лачугин
+						+e.text!=text
+
+mixin message_group_component(text)
+	+b.message-component 
+		+e.wrap
+			+e.P.date 13.07.2020 13:56
+			+b.message-info 
+				+e.group
+					img(src="img/svg/group.svg")
+				+b.message-texts 
+					+e.flex
+						img(src="img/svg/group-small.svg")
+						+e.name Денис Лачугин
+					+e.text!=text
+
+mixin message_group_component_unread(text, newm)
+	+b.message-component.unread 
+		+e.wrap
+			+e.P.date 13.07.2020 13:56
+			+b.message-info 
+				+e.group
+					img(src="img/svg/group.svg")
+				+b.message-texts.unread 
+					+e.flex
+						+e.name Денис Лачугин
+					+e.text!=text
+				+e.message-counter
+					+counter_new_messages(7)
+
+mixin message_group_component_active(text, newm)
+	+b.message-component.active 
+		+e.wrap
+			+e.P.date 13.07.2020 13:56
+			+b.message-info 
+				+e.group
+					img(src="img/svg/group.svg")
+				if newm
+					+b.message-texts.unread 
+						+e.flex
+							+e.name Денис Лачугин
+						+e.text!=text
+					+e.message-counter
+						+counter_new_messages(9)
+				else 
+					+b.message-texts
+						+e.flex
+							+e.name Денис Лачугин
+						+e.text!=text

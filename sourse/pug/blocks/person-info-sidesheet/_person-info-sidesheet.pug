@@ -1,0 +1,56 @@
+include ../private-chat-info/_private-chat-info.pug
+include ../side-sheet-chat-info/_side-sheet-chat-info.pug
+
+mixin person_info_sidebar()
+	+b.side-sheet 
+		.containers--private-chat
+				+privat-chat-side-sheet("Информация")
+		.containers--private-chat
+			+e.person 
+				+e.chat-photo
+					img(src="img/@2x/slide-25.jpg")
+				+e.post
+					+e.P.request-number Денис Лачугин
+					+e.P.online Был(а) в сети 12 минут назад
+			+e.container-b32
+				+e.P.private-chat-topic-request Должность
+				+e.request-number Начальник отдела ИТАТ ООО “ГПН-ГЕО”
+			+e.container-notifs
+				//- тут switch
+				//- img(src="img/svg/switch-on.svg")
+				//- +e.request-number Уведомления
+				+Switch('Уведомления')
+			+person_attachments()
+
+mixin chat_info_sidebar()
+	+b.side-sheet 
+		.containers--private-chat
+				+privat-chat-side-sheet("Информация")
+		.containers--private-chat
+			+e.person 
+				+e.chat-photo-group
+					img.group-photo(src="img/svg/group.svg")
+				+e.post
+					+e.P.request-number Команда А
+					+e.P.online 6 участников
+			+e.container-notifs
+				//- тут switch
+				+Switch('Уведомления')
+			+chat_attachments()
+			+chat_info_bottom(300)
+
+
+mixin person_attachments()
+	+b.attachments 
+		+attachments_position("media", "Медиа", 3)
+		+attachments_position("documents", "Документы", 7)
+		+attachments_position("clip", "Ссылки", 8)
+		+attachments_position("leave-chat", "Выйти из чата")
+
+mixin chat_attachments()
+	+b.attachments 
+		+attachments_position("media", "Медиа", 3)
+		+attachments_position("documents", "Документы", 7)
+		+attachments_position("clip", "Ссылки", 8)
+		+attachments_position("leave-chat", "Выйти из чата")
+		+attachments_position_delete()
